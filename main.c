@@ -52,7 +52,7 @@ unit test es make f y liftexter con make m make b make y make+nombre de funcion 
 //	printf("%s\n", strchr("g", 00));
 //	printf("%s\n", strrchr(strchr1, 0));	
 //	printf("%s\n", memchr(strchr1, \0, 3));	
-	printf("%d\n", memcmp(strchr1, strchr2, 4));	
+//	printf("%d\n", memcmp(strchr1, strchr2, 4));	
 //	printf("%s\n", strnstr(strchr1+2,'b',0));	
 //	printf("%d", atoi(atoii));
 
@@ -75,9 +75,10 @@ unit test es make f y liftexter con make m make b make y make+nombre de funcion 
 //	printf("%d\n", ft_strncmp(cmp1, cmp2, 1));	
 //	printf("%s\n",ft_memchr(strchr1, \0, 3));	
 //	printf("%s\n", ft_memchr(strchr1, '0', 1));	
-	printf("%d\n", ft_memcmp(strchr1, strchr2, 4));	
+//	printf("%d\n", ft_memcmp(strchr1, strchr2, 4));	
 //	printf("%d\n",ft_memcmp("zyxbcdefgh", "abcdefgxyz", 0));	
 //	printf("%d\n",ft_strnstr(strchr1+2, 'b', 0));	
 //	printf("%d\n", ft_atoi(atoii));
+//	printf("%s", ft_substr("asdfghjasdf", 4, 4));
 	return(0);
 }
