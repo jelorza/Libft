@@ -14,8 +14,8 @@ int	main(void)
 //	char dst[20];
 //	char *src = "asdfg";
 	int touplowr1;
-	char strchr1[] = {0,0,127,0};
-	char strchr2[] = {0,0,42,0};
+//	char strchr1[] = {0,0,127,0};
+//	char strchr2[] = {0,0,42,0};
 //	char cmp1[] = "sdfg";
 //	char cmp2[] = "-";
 //	char atoii[] = "  - ";
@@ -80,5 +80,7 @@ unit test es make f y liftexter con make m make b make y make+nombre de funcion 
 //	printf("%d\n",ft_strnstr(strchr1+2, 'b', 0));	
 //	printf("%d\n", ft_atoi(atoii));
 //	printf("%s", ft_substr("asdfghjasdf", 4, 4));
+//	printf("%s", ft_strjoin("hola", "jooooon"));
+	printf("%s", ft_strtrim("123asdfg1234", "1234"));
 	return(0);
 }
