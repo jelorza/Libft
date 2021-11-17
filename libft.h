@@ -6,7 +6,7 @@
 /*   By: jelorza- <jelorza-@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 11:58:14 by jelorza-          #+#    #+#             */
-/*   Updated: 2021/11/16 17:34:48 by jelorza-         ###   ########.fr       */
+/*   Updated: 2021/11/17 19:48:16 by jelorza-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(const char *s1, char const *set);
+char	**ft_split(char const *s, char c);
 
 #endif
