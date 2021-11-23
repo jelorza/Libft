@@ -6,7 +6,7 @@
 /*   By: jelorza- <jelorza-@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 12:20:21 by jelorza-          #+#    #+#             */
-/*   Updated: 2021/11/12 16:33:47 by jelorza-         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:26:53 by jelorza-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	i = 0;
 	j = 0;
+	if (!s)
+		return (0);
 	if (start >= ft_strlen(s))
 		return (ft_strdup(""));
 	if (len > ft_strlen(s))
 		len = ft_strlen(s);
-	ptr = (char *)malloc (sizeof(char) * (len));
-	if (!ptr || !s)
+	ptr = (char *)malloc (sizeof(char) * (len + 1));
+	if (!ptr)
 		return (0);
 	while (start--)
 		i++;

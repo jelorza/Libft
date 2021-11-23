@@ -6,7 +6,7 @@
 /*   By: jelorza- <jelorza-@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:17:14 by jelorza-          #+#    #+#             */
-/*   Updated: 2021/11/08 16:33:03 by jelorza-         ###   ########.fr       */
+/*   Updated: 2021/11/22 18:05:07 by jelorza-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if ((*(char *)dst == '\0') && (*(char *)src == '\0'))
+	if (!dst && !src)
 	{
 		return (NULL);
 	}
@@ -27,4 +27,4 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		((char *)dst)[len] = ((char *)src)[len];
 	}
 	return (dst);
-}	
+}

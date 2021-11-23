@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jelorza- <jelorza-@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 12:09:25 by jelorza-          #+#    #+#             */
-/*   Updated: 2021/11/23 13:10:28 by jelorza-         ###   ########.fr       */
+/*   Created: 2021/11/23 19:20:26 by jelorza-          #+#    #+#             */
+/*   Updated: 2021/11/23 19:22:50 by jelorza-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_strmapi(const char *s, char (*f) (unsigned int, char))
 {
-	int	i;
-	int	is_neg;
-	int	res;
+	char	*dest;
+	size_t	i;
 
-	if (!str)
+	if (!s)
+		return (NULL);
+	i = -1;
+	dest = (char *) malloc (sizeof(char) * ft_strlen(s) + 1);
+	if (!dest)
 		return (0);
-	i = 0;
-	is_neg = 1;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
-		i++;
-	if (str[i] == 45 || str[i] == 43)
+	while (s[++i])
 	{
-		if (str[i] == 45)
-			is_neg = -1;
-		i++;
+	dest[i] = f(i, ((char *)s)[i]);
 	}
-	res = 0;
-	while (str[i] >= '0' && str[i] <= '9')
-		res = (res * 10) + (str[i++] - '0');
-	return (res * is_neg);
-}		
+	dest[i] = '\0';
+	return (dest);
+}

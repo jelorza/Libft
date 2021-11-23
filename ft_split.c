@@ -1,82 +1,86 @@
-#include <stdio.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jelorza- <jelorza-@student.42urduli>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/23 13:48:32 by jelorza-          #+#    #+#             */
+/*   Updated: 2021/11/23 13:50:47 by jelorza-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char	*ft_give_value(size_t end, size_t start, const char *s)
+#include "libft.h"
+
+static size_t	ft_str_counter(const char *s, char c)
 {
-	char *ret;
-	size_t i;
-	size_t counter;
+	size_t	count;
 
-	counter = end - start;
+	count = 0;
+	while (*s == c && *s)
+		s++;
+	while (*s)
+	{
+		while (*s && *s != c)
+			s++;
+		while (*s && *s == c)
+			s++;
+		count++;
+	}
+	return (count);
+}
+
+static char	*ft_splitdup(const char *s, size_t start, size_t finish)
+{
+	char	*dest;
+	size_t	i;
+
 	i = 0;
-	ret = (char *) malloc (sizeof(char) * (counter + 1));
-	if (!ret)
+	dest = (char *)malloc(sizeof(char) * (finish - start + 1));
+	if (!dest)
 		return (NULL);
-	while (counter--)
-		ret[i++] = s[start++];
-	ret[i] = '\0';
-	return (ret);
+	while (start < finish)
+		dest[i++] = s[start++];
+	dest[i] = '\0';
+	return (dest);
 }
 
-
-
-static char **ft_split_for_mem(const char *s, char c, char **mem)
+static char	**ft_fill_split(char **dest, const char *s, char c)
 {
-	size_t end;
-	size_t start;
-	size_t count_mem;
+	size_t	i;
+	size_t	p1;
+	size_t	start;
 
-//	end = 0;
+	i = 0;
+	p1 = 0;
 	start = 0;
-	count_mem = 0;
-	while (s[start] == c)
-		start++;
-	end = start;
-	while (s[end])
+	while (s[i])
 	{
-		if (s[end] == c && s[end + 1] != c)
+		while (s[i] != c && s[i])
 		{
-			mem[count_mem] = ft_give_value(end, start, s);
-			start = end + 1;
-			count_mem++;
-			end++;
+			i++;
+			if (s[i] == c || i == ft_strlen(s))
+				dest[p1++] = ft_splitdup(s, start, i);
 		}
-		else
-			end++;
+		while (s[i] == c && s[i])
+		{
+			i++;
+			start = i;
+		}
 	}
-	mem[count_mem] = 00;
-	return (mem);
+	dest[p1] = NULL;
+	return (dest);
 }
-
-static int ft_count_strs(const char *s, char c)
-{
-	size_t n;
-	size_t tot_strs;
-
-
-	n = 0;
-	tot_strs = 0;
-	while (s[n] == c)
-		n++;
-	while (s[n])
-	{
-		if ((s[n] == c) && (s[n + 1] != c))
-			tot_strs++;
-		n++;
-	}
-		return (tot_strs);
-}	
 
 char	**ft_split(const char *s, char c)
 {
-	char	**mem;
+	char	**dest;
 
-	if (c == 00 || *s == 00)
+	if (!s)
 		return (NULL);
-
-	mem = (char **) malloc (sizeof(char *) * ft_count_strs(s, c) + 1);
-	if (!mem)
+	dest = (char **)malloc(sizeof(char *) * (ft_str_counter(s, c) + 1));
+	if (!dest)
 		return (NULL);
-	mem = ft_split_for_mem(s, c, mem);
-	return (mem);
+	ft_fill_split(dest, s, c);
+	return (dest);
 }

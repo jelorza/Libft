@@ -6,7 +6,7 @@
 /*   By: jelorza- <jelorza-@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 12:07:19 by jelorza-          #+#    #+#             */
-/*   Updated: 2021/11/10 12:08:57 by jelorza-         ###   ########.fr       */
+/*   Updated: 2021/11/22 18:39:01 by jelorza-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,6 @@ void	*ft_calloc(size_t count, size_t size)
 	ptr = (void *) malloc (count * size);
 	if (!ptr)
 		return (00);
-	else
-	{
-		while (*(char *)ptr)
-		{
-			*(char *)ptr = 0;
-			ptr++;
-		}
-	}
+	ft_memset(ptr, 0, size * count);
 	return (ptr);
 }

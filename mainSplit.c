@@ -2,13 +2,17 @@
 
 int main(void)
 {
-	char str[] = "   hola que tal estas";
+	char str[] = "                  olo";
 	char c;
 	char **mem;
+	size_t i;
 	
+	i = 0;
 	c = ' ';
 	mem = ft_split(str, c);
-	printf("%s\n", mem[0]);
-	printf("%s\n", mem[1]);
-	printf("%s", mem[2]);
+	while (mem[i])
+	{
+		printf("%s\n", mem[i]);
+		i++;
+	}
 }

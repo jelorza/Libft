@@ -6,7 +6,7 @@
 /*   By: jelorza- <jelorza-@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 20:07:09 by jelorza-          #+#    #+#             */
-/*   Updated: 2021/11/16 20:12:07 by jelorza-         ###   ########.fr       */
+/*   Updated: 2021/11/23 13:28:58 by jelorza-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*ft_strtrim(const char *s, const char *set)
 	i = 0;
 	start = 0;
 	end = 0;
+	if (!s || !set)
+		return (0);
 	while (s[start] && ft_compare(set, s[start]))
 		start++;
 	end = ft_strlen(s);

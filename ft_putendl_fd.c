@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jelorza- <jelorza-@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 12:09:25 by jelorza-          #+#    #+#             */
-/*   Updated: 2021/11/23 13:10:28 by jelorza-         ###   ########.fr       */
+/*   Created: 2021/11/22 19:30:27 by jelorza-          #+#    #+#             */
+/*   Updated: 2021/11/22 19:31:27 by jelorza-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
-{
-	int	i;
-	int	is_neg;
-	int	res;
-
-	if (!str)
-		return (0);
-	i = 0;
-	is_neg = 1;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
-		i++;
-	if (str[i] == 45 || str[i] == 43)
+void	ft_putendl_fd(char *s, int fd)
+{	
+	if (s)
 	{
-		if (str[i] == 45)
-			is_neg = -1;
-		i++;
+		write(fd, s, ft_strlen(s));
+		write(fd, "\n", 1);
 	}
-	res = 0;
-	while (str[i] >= '0' && str[i] <= '9')
-		res = (res * 10) + (str[i++] - '0');
-	return (res * is_neg);
-}		
+}
