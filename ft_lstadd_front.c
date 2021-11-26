@@ -6,7 +6,7 @@
 /*   By: jelorza- <jelorza-@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 20:19:07 by jelorza-          #+#    #+#             */
-/*   Updated: 2021/11/24 20:21:19 by jelorza-         ###   ########.fr       */
+/*   Updated: 2021/11/26 20:27:56 by jelorza-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if(*lst)
+	if (*lst)
 		new->next = *lst;
 	*lst = new;
 }

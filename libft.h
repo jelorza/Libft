@@ -6,7 +6,7 @@
 /*   By: jelorza- <jelorza-@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 11:58:14 by jelorza-          #+#    #+#             */
-/*   Updated: 2021/11/26 14:50:20 by jelorza-         ###   ########.fr       */
+/*   Updated: 2021/11/26 19:44:00 by jelorza-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-} t_list;
+}t_list;
 
 int		ft_isdigit(int a);
 int		ft_isalpha(int a);
@@ -46,7 +46,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 //copia de src a dest la cantidad dstsize -1 
 //caracteres por que el ultimo tiene que ser el '\0'
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
@@ -77,8 +76,11 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_strmapi(const char *s, char (*f) (unsigned int, char));
 void	ft_striteri(char *s, void (*f) (unsigned int, char*));
-//t_list	*ft_lstnew(void *content);
-void	ft_lstdelone(t_list *lst, void(*del)(void *));
-void	ft_lstclear(t_list **lst, void(*del)(void *));
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstdelone(t_list *lst, void (*del) (void *));
+void	ft_lstclear(t_list **lst, void (*del) (void *));
 
 #endif
