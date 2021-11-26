@@ -6,7 +6,7 @@
 /*   By: jelorza- <jelorza-@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 11:58:14 by jelorza-          #+#    #+#             */
-/*   Updated: 2021/11/24 20:11:03 by jelorza-         ###   ########.fr       */
+/*   Updated: 2021/11/26 14:50:20 by jelorza-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_strmapi(const char *s, char (*f) (unsigned int, char));
 void	ft_striteri(char *s, void (*f) (unsigned int, char*));
-t_list	*ft_lstnew(void *content);
+//t_list	*ft_lstnew(void *content);
+void	ft_lstdelone(t_list *lst, void(*del)(void *));
+void	ft_lstclear(t_list **lst, void(*del)(void *));
 
 #endif
