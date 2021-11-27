@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jelorza- <jelorza-@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/26 19:38:43 by jelorza-          #+#    #+#             */
-/*   Updated: 2021/11/27 15:10:14 by jelorza-         ###   ########.fr       */
+/*   Created: 2021/11/27 15:07:00 by jelorza-          #+#    #+#             */
+/*   Updated: 2021/11/27 15:35:35 by jelorza-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+t_list	*ft_lstmap(t_list *lst, void *(*f) (void *), void (*del) (void *))
 {
-	t_list	*actual;
+	t_list	*cabeza;
+	t_list	*new;
 
-	actual = *lst;
-	if (actual == NULL)
-		*lst = new;
-	else
+	if (lst || f || del)
 	{
-		while (actual->next != NULL)
-			actual = actual->next;
-		actual->next = new;
+		cabeza = NULL;
+		while (lst)
+		{
+			new = ft_lstnew((*f)(lst->content));
+			if (!new)
+			{
+				ft_lstclear(&cabeza, del);
+				return (NULL);
+			}
+			ft_lstadd_back(&cabeza, new);
+			lst = lst->next;
+		}
+		return (cabeza);
 	}
+	return (NULL);
 }
