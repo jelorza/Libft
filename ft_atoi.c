@@ -6,7 +6,7 @@
 /*   By: jelorza- <jelorza-@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 12:09:25 by jelorza-          #+#    #+#             */
-/*   Updated: 2021/11/29 09:51:03 by jelorza-         ###   ########.fr       */
+/*   Updated: 2021/11/29 10:17:47 by jelorza-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 int	ft_atoi(const char *str)
 {
 	int					sign;
-	size_t				c;
-	unsigned long int	str2;
+	size_t				i;
+	unsigned long int	res;
 
 	sign = 1;
-	c = 0;
-	str2 = 0;
-	while ((str[c] >= '\t' && str[c] <= '\r') || str[c] == ' ')
-		c++;
-	if ((str[c] == '+' || str[c] == '-') && str[c] != '\0')
+	i = 0;
+	res = 0;
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+		i++;
+	if ((str[i] == '+' || str[i] == '-') && str[i] != '\0')
 	{
-		if (str[c] == '-')
+		if (str[i] == '-')
 			sign *= -1;
-		c++;
+		i++;
 	}
-	while ((str[c] >= '0' && str[c] <= '9') && str[c] != '\0')
+	while ((str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
 	{
-		str2 = (str[c] - '0') + (str2 * 10);
-		c++;
+		res = (str[i] - '0') + (res * 10);
+		i++;
 	}
-	if (str2 > 9223372036854775807 && sign == -1)
+	if (res > 9223372036854775807 && sign == -1)
 		return (0);
-	else if (str2 > 9223372036854775807 && sign == 1)
+	else if (res > 9223372036854775807 && sign == 1)
 		return (-1);
-	return (str2 * sign);
+	return (res * sign);
 }	
